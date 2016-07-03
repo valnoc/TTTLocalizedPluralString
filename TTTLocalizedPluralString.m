@@ -441,7 +441,10 @@ static NSString * TTTVietnamesePluralRuleForCount(NSUInteger count) {
 }
 
 NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, NSString *singular) {
-    NSString *languageCode = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
+    NSString *languageCode = NSLocalizedString(@"TTTLocalizedPluralString_languageCode", @"");
+    if (!languageCode) {
+        languageCode = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
+    }
     return TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(count, singular, languageCode);
 }
 
